@@ -7,9 +7,9 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 100;
     [SerializeField]
-    private float movingRotationSpeed = 50;
+    private float RotationSpeed = 50;
     [SerializeField]
-    private float stillRotatingSpeedReduction = 2;
+    private float rotationSpeedReduction = 2;
 
     private new Rigidbody2D rigidbody2D;
 
@@ -18,18 +18,18 @@ public class PlayerMovementController : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    // Rotate or Accelerate the ship.
-
     void Update()
     {
+        var rotateSpeed = Input.GetAxis("Horizontal") * RotationSpeed * Time.deltaTime;
+
         if (Input.GetKey(KeyCode.W))
         {
             rigidbody2D.velocity = (Vector2.up * moveSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetAxis("Horiztonal") > 0)
         {
-            //Rotate
+            //rigidbody2D.rotation
         }
     }
 }
