@@ -60,7 +60,8 @@ public class PlayerMovementController : MonoBehaviour
     {
         //Modify physics
         rigidBody2D.gravityScale = 0f;
-        rigidBody2D.velocity = transform.up * boostSpeed * Time.deltaTime;
+        rigidBody2D.AddForce(transform.up * boostSpeed, ForceMode2D.Impulse);
+        //rigidBody2D.velocity = transform.up * boostSpeed * Time.deltaTime;
 
         //Modify other variables
         rotationSpeed = boostingRotationSpeed;
