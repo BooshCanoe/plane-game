@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : PooledMonoBehaviour
 {
     [SerializeField]
     private float moveSpeed = 10f;

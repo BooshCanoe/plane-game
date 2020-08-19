@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Pool : MonoBehaviour
@@ -10,9 +8,17 @@ public class Pool : MonoBehaviour
     private Queue<PooledMonoBehaviour> objects = new Queue<PooledMonoBehaviour>();
     private PooledMonoBehaviour prefab;
 
-    public static Pool GetPool(PooledMonoBehaviour prefab)
+    public static Pool GetPool(PooledMonoBehaviour prefabForPool)
     {
-        return null;
+        if (pools.ContainsKey(prefabForPool)) // If a dictionary "pools" already contains this prefab. Skip everything else.
+            return pools[prefabForPool];
+
+        var poolGameObject = new GameObject("Pool-" + prefabForPool.name); // Create a new Empty Game Object (Name it Pools-"prefabname")
+        var pool = poolGameObject.AddComponent<Pool>(); //Add .this script to the Prefab.
+        pool.prefab = prefabForPool; //Get the prefab this script it attached to and set it to be the one we passed in.
+
+        pools.Add(prefabForPool, pool); // Create the dictionary 
+        return pool;
     }
 
     public T Get<T>() where T : PooledMonoBehaviour
