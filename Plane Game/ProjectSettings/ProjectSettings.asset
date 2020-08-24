@@ -623,10 +623,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: 7b8006ef-e528-434b-a100-77b1ccd08d0e
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: PrototypeCollection 1
+  organizationId: cooshbanoe
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
