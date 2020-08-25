@@ -7,12 +7,14 @@ public class TopDownPlayerController : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 10f;
 
-    private new Rigidbody2D rigidbody2D;
-
     private float dirX;
     private float dirY;
-    private Vector2 movement;
-    
+    public Vector2 movement;
+
+    private new Rigidbody2D rigidbody2D;
+
+    public bool Dash;
+    public bool Attack;
 
     private void Awake()
     {
@@ -25,23 +27,47 @@ public class TopDownPlayerController : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        Debug.Log("DirX = " + dirX);
-        Debug.Log("DirY = " + dirY);
+        Attack = Input.GetButtonDown("Fire1");
+        Dash = Input.GetButtonDown("Fire2");
     }
 
     private void FixedUpdate()
     {
-        handleMovement();
+        handleRotation();
     }
 
     private void handleRotation()
     {
-               
+        //Look Up
+        if(movement.x == 0 && movement.y == 1)
+            rigidbody2D.transform.rotation = Quaternion.Euler(0, 0, 0);
+        //Look Up / Right
+        if (movement.x == 1 && movement.y == 1)
+            rigidbody2D.transform.rotation = Quaternion.Euler(0, 0, -45);
+        //Look Right
+        if (movement.x == 1 && movement.y == 0)
+            rigidbody2D.transform.rotation = Quaternion.Euler(0, 0, -90);
+        //Look Down / Right
+        if (movement.x == 1 && movement.y == -1)
+            rigidbody2D.transform.rotation = Quaternion.Euler(0, 0, -135);
+        //Look Down
+        if (movement.x == 0 && movement.y == -1)
+            rigidbody2D.transform.rotation = Quaternion.Euler(0, 0, -180);
+        //Look Down / Left
+        if (movement.x == -1 && movement.y == -1)
+            rigidbody2D.transform.rotation = Quaternion.Euler(0, 0, 135);
+        //Look Left
+        if (movement.x == -1 && movement.y == 0)
+            rigidbody2D.transform.rotation = Quaternion.Euler(0, 0, 90);
+        //Look Left / Up
+        if (movement.x == -1 && movement.y == 1)
+            rigidbody2D.transform.rotation = Quaternion.Euler(0, 0, 45);
+
     }
 
     private void handleMovement()
     {
-        rigidbody2D.MovePosition(rigidbody2D.position + movement * moveSpeed * Time.fixedDeltaTime);
+        //rigidbody2D.MovePosition(rigidbody2D.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 }
 
