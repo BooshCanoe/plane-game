@@ -9,12 +9,11 @@ public class TopDownPlayerController : MonoBehaviour
 
     private float dirX;
     private float dirY;
-    public Vector2 movement;
+    private Vector2 movement;
 
     private new Rigidbody2D rigidbody2D;
 
-    public bool Dash;
-    public bool Attack;
+    public Vector2 PlayerDirection { get { return movement; } }
 
     private void Awake()
     {
@@ -26,11 +25,9 @@ public class TopDownPlayerController : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-
-        Attack = Input.GetButtonDown("Fire1");
-        Dash = Input.GetButtonDown("Fire2");
     }
 
+    //Handle Physics
     private void FixedUpdate()
     {
         handleRotation();
@@ -62,12 +59,6 @@ public class TopDownPlayerController : MonoBehaviour
         //Look Left / Up
         if (movement.x == -1 && movement.y == 1)
             rigidbody2D.transform.rotation = Quaternion.Euler(0, 0, 45);
-
-    }
-
-    private void handleMovement()
-    {
-        //rigidbody2D.MovePosition(rigidbody2D.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 }
 
