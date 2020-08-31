@@ -49,12 +49,7 @@ public class Controller : MonoBehaviour
         }
     }
 
-    internal bool AnyButtonDown()
-    {
-        return attackPressed;
-    }
-
-    internal Vector2 GetDirection()
+     internal Vector2 GetDirection()
     {
         return new Vector2(horizontal, vertical);
     }

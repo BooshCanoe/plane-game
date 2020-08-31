@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Ability_Melee : AbilityBase
 {
+    [SerializeField]
+    private float attackRange;
+
     protected override void onUse()
     {
         Debug.Log("Used Melee");

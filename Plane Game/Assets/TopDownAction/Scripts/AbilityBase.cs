@@ -34,7 +34,6 @@ public abstract class AbilityBase : MonoBehaviour
 
         if (shouldTryUse())
         {
-            Debug.Log(button);
             onUse();
         }
     }
