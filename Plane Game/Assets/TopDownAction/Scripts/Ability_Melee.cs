@@ -6,11 +6,50 @@ using UnityEngine;
 public class Ability_Melee : AbilityBase
 {
     [SerializeField]
+    private float inStanceAttackRange;
+    [SerializeField]
+    private float outStanceAttackRange;
+    [SerializeField]
+    private float inStanceAttackDamage;
+    [SerializeField]
+    private float outStanceAttackDamage;
+    [SerializeField]
+    private LayerMask attackableLayerMask;
+
+    private bool inStance;
     private float attackRange;
+    private float attackDamage;
+
+    private void onStart()
+    {
+        Stance.onStanceChange += Stance_onStanceChange;
+    }
+
+    // Modify varibles when in Stance
+    private void Stance_onStanceChange()
+    {
+        inStance = !inStance;
+
+        if (inStance)
+        {
+            attackRange = inStanceAttackRange;
+            attackDamage = inStanceAttackDamage;
+        }
+        if (!inStance)
+        {
+            attackRange = outStanceAttackRange;
+            attackDamage = outStanceAttackDamage;
+        }
+    }
 
     protected override void onUse()
     {
         Debug.Log("Used Melee");
+    }
+
+    private void OnDestroy()
+    {
+        Stance.onStanceChange -= Stance_onStanceChange;
     }
 }
 

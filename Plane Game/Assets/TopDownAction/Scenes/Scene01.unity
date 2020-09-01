@@ -3398,6 +3398,7 @@ GameObject:
   - component: {fileID: 959108895}
   - component: {fileID: 959108894}
   - component: {fileID: 959108896}
+  - component: {fileID: 959108898}
   m_Layer: 0
   m_Name: PlayerObject
   m_TagString: Untagged
@@ -3418,7 +3419,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1000
-  maxVelocity: 5
+  inStanceVelocity: 0
+  outStanceVelocity: 6
 --- !u!50 &959108892
 Rigidbody2D:
   serializedVersion: 4
@@ -3471,7 +3473,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: 1
   abilityRefreshSpeed: 0
-  dashForce: 7
+  inStanceDashForcce: 1
+  outStanceDashForcce: 3
 --- !u!114 &959108895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3486,6 +3489,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: 0
   abilityRefreshSpeed: 0
+  inStanceAttackRange: 0
+  outStanceAttackRange: 0
+  inStanceAttackDamage: 0
+  outStanceAttackDamage: 0
+  attackableLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &959108896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3517,6 +3527,18 @@ MonoBehaviour:
   stancePressed: 0
   horizontal: 0
   vertical: 0
+--- !u!114 &959108898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959108890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65ebf5097978406408636da1dc995e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &972009440
 GameObject:
   m_ObjectHideFlags: 0
